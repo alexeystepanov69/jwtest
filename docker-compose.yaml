@@ -1,0 +1,32 @@
+version: "3.4"
+
+services:
+  db:
+    image: library/postgres:9.6-alpine
+    volumes:
+      - jwt_data-local-dev:/var/lib/postgres/data/
+    ports:
+      - 5432:5432
+    env_file:
+      - env.txt
+    healthcheck:
+      test: "pg_isready -U $$POSTGRES_USER"
+      retries: 20
+      interval: 20s
+
+  app:
+    build: ./app
+    image: jwtest_app-local-dev:latest
+    command: ./start_app_server.sh
+    ports:
+    - 8005:8005
+    volumes:
+    - ./app:/app
+    env_file:
+      - env.txt
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  jwt_data-local-dev:
