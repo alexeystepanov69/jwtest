@@ -22,6 +22,7 @@ services:
     - 8005:8005
     volumes:
     - ./app:/app
+    - ./jwt_signature:/jwt_signature
     env_file:
       - env.txt
     depends_on:

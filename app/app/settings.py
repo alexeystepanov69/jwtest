@@ -147,4 +147,7 @@ JWT_AUTH = {
     'JWT_VERIFY_EXPIRATION': True,
     'JWY_EXPIRATION_DELTA': datetime.timedelta(seconds=300),
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_PUBLIC_KEY': open(os.environ.get('JWT_PUBLIC_KEY')).read(),
+    'JWT_PRIVATE_KEY': open(os.environ.get('JWT_PRIVATE_KEY')).read(),
+    'JWT_ALGORITHM': 'RS256',
 }

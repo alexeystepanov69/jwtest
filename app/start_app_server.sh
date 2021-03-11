@@ -21,6 +21,13 @@ then
                              user.save()"
 fi
 
+echo "### Checking JWT signature keys."
+if [ -z "$(ls -A /jwt_signature)" ]
+then
+  echo "### JWT signature keys don't exist. Exiting."
+  exit 1
+fi
+
 if [ -n "$PROD" ]
 then
   echo "### Collecting staticfiles."
