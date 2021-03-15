@@ -1,12 +1,12 @@
-version: "3.4"
+version: "2.4"
 
 services:
   db:
     image: library/postgres:9.6-alpine
     volumes:
       - jwt_data-local-dev:/var/lib/postgres/data/
-    ports:
-      - 5432:5432
+    expose:
+      - 5432
     env_file:
       - env.txt
     healthcheck:
