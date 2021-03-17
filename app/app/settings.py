@@ -150,4 +150,5 @@ JWT_AUTH = {
     'JWT_PUBLIC_KEY': open(os.environ.get('JWT_PUBLIC_KEY')).read(),
     'JWT_PRIVATE_KEY': open(os.environ.get('JWT_PRIVATE_KEY')).read(),
     'JWT_ALGORITHM': 'RS256',
+    'JWT_AUTH_COOKIE': 'X-Qlik-Session-jwt',
 }
